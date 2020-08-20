@@ -1,5 +1,5 @@
 function ripple() {
-    document.querySelectorAll('raised-button, flat-button, outline-button, floating-action-button, icon-button').forEach(function(button) {
+    document.querySelectorAll('.raised-button, .flat-button, .outline-button, .floating-action-button, .icon-button').forEach(function(button) {
         if(!button.onpointerdown){
             button.onpointerdown = function(e){
                 // creating ripple and adding class
@@ -63,21 +63,9 @@ function ripple() {
         }
     })
 }
-ripple()
-
-function switchButtons(){
-    document.querySelectorAll('switch-button').forEach(switchButton => {
-        if(!switchButton.onclick){
-            switchButton.onclick = function(){
-                console.log('sdsdfsdfsdfsdfsdsdsd')
-            }
-        }
-    });
-}
 
 setInterval(() => {
     ripple()
-    switchButtons()
 }, 100);
 
 // DOMNodeInserted
