@@ -1,0 +1,166 @@
+@import './constants.css';
+
+* {
+    font-family: Roboto;
+    box-sizing: border-box;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+body {
+    padding-top: 60px;
+}
+
+@font-face {
+    src: url('../fonts/Roboto/Roboto-Medium.ttf');
+    font-family: Roboto;
+}
+
+raised-button, flat-button, outline-button, floating-action-button, icon-button {
+    --elevation-transition: 300ms;
+    --color: var(--red-500);
+    --splash-color: white;
+    min-width: 64px;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: var(--elevation-transition);
+}
+
+raised-button {
+    color: white;
+    background: var(--color);
+    box-shadow: var(--elevation-1);
+}
+raised-button:hover { box-shadow: var(--elevation-4); filter: brightness(102.5%); }
+
+flat-button {
+    color: var(--color);
+    --splash-color: var(--color);
+}
+flat-button:hover:after { opacity: 0.075; }
+
+outline-button {
+    color: var(--color);
+    border: 1px solid var(--color);
+    --splash-color: var(--color);
+}
+outline-button:hover:after { opacity: 0.05; }
+
+flat-button:after, outline-button:after, icon-button:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: var(--color);
+    opacity: 0;
+    transition: 300ms;
+}
+
+floating-action-button {
+    --size: 50px;
+    width: var(--size);
+    height: var(--size);
+    min-width: 50px;
+    padding: 0;
+    color: white;
+    background: var(--color);
+    border-radius: 50%;
+    box-shadow: var(--elevation-1);
+}
+floating-action-button:hover { box-shadow: var(--elevation-4); filter: brightness(102.5%); }
+
+icon-button {
+    --size: 42px;
+    width: var(--size);
+    height: var(--size);
+    min-width: 42px;
+    color: var(--color);
+    --splash-color: var(--color);
+    border-radius: 50%;
+}
+icon-button:hover:after { opacity: 0.1; }
+
+.ripple {
+    width: 0px;
+    height: 0px;
+    background: var(--splash-color);
+    border-radius: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    pointer-events: none;
+}
+
+app-bar {
+    --height: 60px;
+    width: 100%;
+    height: var(--height);
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: var(--blue-600);
+    line-height: var(--height);
+    box-shadow: var(--elevation-2);
+}
+
+app-bar-title {
+    color: white;
+    font-size: 20px;
+    margin: 0 15px;
+}
+
+app-bar-leading {
+    float: left;
+    margin-left: 10px;
+}
+
+app-bar-actions {
+    float: right;
+    margin-right: 10px;
+}
+
+.switch {
+    --color: var(--blue-600);
+    width: 40px;
+    height: 20px;
+    background: #e2e2e2;
+    border-radius: 30px;
+    display: inline-flex;
+    box-shadow: inset 0 0 5px 3px rgba(0, 0, 0, 0.035);
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+}
+
+.switch:after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: white;
+    border-radius: 50%;
+    transform: scale(1.35, 1.35);
+    box-shadow: var(--elevation-1);
+    transition: 300ms;
+}
+
+.switch:checked:after {
+    left: 20px;
+    background: var(--color);
+}
